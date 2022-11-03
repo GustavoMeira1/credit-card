@@ -1,28 +1,36 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <clonas/>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import clonas from './components/clonas.vue';
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
-  }
-}
+    clonas,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@media only screen and (max-width: 400px) {
+#app{
+  display: flex;
+  position: relative;
+  background-image: url(./images/bg-main-mobile.png) ;
+  background-repeat: no-repeat;
+}
+}
+@media only screen and (min-width: 400px) {
+#app{
+  display: flex;
+  position: relative;
+  background-image: url(./images/bg-main-desktop.png) ;
+  background-repeat: no-repeat;
+}
 }
 </style>
