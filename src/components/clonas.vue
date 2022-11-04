@@ -1,17 +1,23 @@
 <template>
   <v-container>
     <v-row no-gutters>
-      <v-col class="credit">
-
+      <v-col class="inver">
+        
         <v-col>
-          <v-img src="../images/bg-card-front.png" width="400px"  class="credit ma-2">
+          <v-img src="../images/bg-card-back.png" class="back cards">
+            <p class="cvc" style="color:white">{{cvc}}</p>
+          </v-img>
+        </v-col>
+        
+        <v-col>
+          <v-img src="../images/bg-card-front.png"  class="credit cards">
             <v-row> <div class="ball"></div> <div class="bell"></div></v-row>
             
             <div class="number"><p>{{number}}</p></div>
-
+        
             <div class="lowData">
               <v-row>
-                <v-col  md="9">  
+                <v-col  md="9" class="col-9">  
                   <span style="text-transform: uppercase;">{{name}} </span>
                 </v-col>
                 
@@ -20,15 +26,10 @@
                 </v-col>
               </v-row>
             </div>
-
-          </v-img>
-       </v-col>
-      
-        <v-col class="back">
-          <v-img src="../images/bg-card-back.png" width="400px" class="credit ma-2">
-            <p class="cvc">{{cvc}}</p>
+        
           </v-img>
         </v-col>
+
       </v-col>
     
       <v-col md="4" class="dados">
@@ -43,7 +44,7 @@
         <v-text-field
         outlined dense required
         :rules="rules"
-        placeholder="Your Name"
+        placeholder="e.g. Jane Appleseed"
         v-model="newName" @input="changeName()" 
         color="purple darken-2"
         ></v-text-field>
@@ -52,40 +53,35 @@
         <v-text-field 
         outlined dense 
         :rules="rules"
-        placeholder="0000 0000 0000 0000"
+        placeholder="e.g. 2452 5436 6545 1234"
         color="purple darken-2"
         v-mask="'#### #### #### ####'" v-model="newNumber" @input="changeNumber()"
         ></v-text-field>
         
         <v-row>
-          <v-col
-           md="6" class="dataSpan">
+          <v-col class="dataSpan col-6">
           <span>EXP. DATE (MM/YY)</span>
           </v-col>
 
-          <v-col
-           md="6" class="dataSpan">
+          <v-col class="dataSpan col-6">
             <span>CVC</span>
           </v-col>
 
-          <v-col 
-            md="3">
+          <v-col class="col-3">
             <v-text-field
             placeholder="MM" outlined dense v-model="newMm" v-mask="'##'" @input="changeMm()"
             color="purple darken-2"
             ></v-text-field>
           </v-col>
           
-          <v-col
-            md="3">
+          <v-col class="col-3">
             <v-text-field 
             placeholder="YY" outlined dense v-model="newYy" v-mask="'##'" @input="changeYy()"
             color="purple darken-2"
             ></v-text-field>
           </v-col>
           
-          <v-col
-            md="6">
+          <v-col class="col-6">
             <v-text-field 
             placeholder="e.g. 123" required
             outlined dense 
@@ -109,7 +105,7 @@
              >
                mdi-check
              </v-icon>  
-            <h1>THANK YOU!</h1>
+            <h1 style="color:hsl(278, 68%, 11%)">THANK YOU!</h1>
             <p>We've added your card details</p>
             
             <v-btn color="hsl(278, 68%, 11%)" @click="e1=1"
@@ -203,6 +199,9 @@
 
 <style>
 @media only screen and (max-width: 450px) { 
+.cards{
+  width: 300px;
+}
 .ball{
   background-color: white;
   width: 35px;
@@ -220,12 +219,15 @@
 }
 .credit{
   color: white !important;
+  margin-top: -90px !important;
+  margin-left: -10px;
 }
 .back{
+  margin-left: 35px;
 }
 .cvc{
-  margin-top: 77px; 
-  margin-left: 260px; 
+  margin-top: 70px; 
+  margin-left: 235px; 
   font-weight: bold;
   letter-spacing: 2px;
 }
@@ -259,7 +261,15 @@
 }
 
 }
-@media only screen and (min-width: 500px) {
+  @media only screen and (min-width: 450px) {
+.cards{
+  width: 400px;
+}
+  .inver{
+  display: -webkit-flex;
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse !important;
+  }
 .ball{
   background-color: white;
   width: 40px;
@@ -281,7 +291,7 @@
   color: white !important;
 }
 .back{
-  margin-left: 90px;
+  margin-left: 150px !important;
 }
 .cvc{
   margin-top: 97px; 
